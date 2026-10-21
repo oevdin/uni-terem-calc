@@ -1,0 +1,7 @@
+src/price/
+src/raw.json
+video/vo/
+video/raw/
+video/raw.webm
+video/marks.json
+__pycache__/
