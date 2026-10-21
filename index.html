@@ -3,7 +3,7 @@
 <title>Калькулятор дверей Терем</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Forum&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Forum&family=Manrope:wght@400;500;600;700;800&display=swap">
 <style>
 /* Layout: рабочий инструмент — тонкая шапка; слева шаги заказа (клиент → двери → доп. позиции), справа закреплённый итог и живой лист документа */
 :root{
@@ -239,16 +239,35 @@ details.qty[open] summary::before{content:"－ ";}
 .qform{display:flex;gap:8px;align-items:end;flex-wrap:wrap}.qform .f{flex:1;min-width:200px;max-width:360px}
 .qmsg{font-size:12.5px;margin-top:6px}.qmsg.bad{color:var(--danger)}
 .qok{font-size:13px;font-weight:600;color:var(--hi)}
+.sbox{width:min(520px,100%)}
+.sbody{padding:4px 16px 18px;display:flex;flex-direction:column;gap:12px}
+.smsg{font-size:12.5px;color:var(--danger);min-height:1em}.smsg.ok{color:var(--hi)}
+/* переходы */
+@media (prefers-reduced-motion:no-preference){
+ @keyframes vin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+ @keyframes fin{from{opacity:0}to{opacity:1}}
+ #viewCalc:not([hidden]),#viewLearn:not([hidden]),#viewHist:not([hidden]){animation:vin .35s cubic-bezier(.2,.7,.2,1)}
+ .door .db{animation:vin .3s ease}
+ .lcontent>*{animation:vin .4s cubic-bezier(.2,.7,.2,1) both}
+ .lcontent>*:nth-child(2){animation-delay:.04s}.lcontent>*:nth-child(3){animation-delay:.08s}.lcontent>*:nth-child(4){animation-delay:.12s}.lcontent>*:nth-child(n+5){animation-delay:.16s}
+ .vmodal:not([hidden]){animation:fin .2s ease}.vmodal:not([hidden]) .vbox{animation:vin .3s cubic-bezier(.2,.7,.2,1)}
+ .card,.lbox,.qcard,.lcard,.pics button,.btn,.icon-btn,.seg button,.lnav button{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease,background .2s ease,color .2s ease}
+ .lbox:hover,.qcard:not(.done):hover,.lcard:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+ .pics button:hover{transform:translateY(-2px)}
+ .btn:active,.icon-btn:active{transform:scale(.97)}
+ #sumTotal{transition:color .3s}
+}
 /* подвал */
 footer.foot .in{display:flex;align-items:center;justify-content:center;gap:10px;padding-block:22px 30px;border-top:1px solid var(--line);color:var(--mute);font-size:12.5px}
 footer.foot .u{width:22px;height:22px;border-radius:6px;background:var(--ink);color:var(--ink-fg);display:grid;place-items:center;font-weight:700;font-size:12px}
 footer.foot .brandname{color:var(--brand);font-weight:700;letter-spacing:.01em}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 /* ===== Лист документа (всегда «бумага», светлый) ===== */
-#paper{--ink:#1d1d1b;--pm:#7a7671;--pl:#d9d4cc;--pa:#8c7a5b;--pb:#f6f3ee;
-  width:794px;background:#fff;color:var(--ink);font-family:var(--ui);font-size:11px;line-height:1.35;padding:40px 44px 36px;transform-origin:0 0}
+#paper{--ink:#1a1a1a;--pm:#76716a;--pl:#e2ddd4;--pa:#a68a5b;--pb:#f7f4ee;
+  width:794px;background:#fff;color:var(--ink);font-family:"Manrope",var(--ui);border-top:6px solid var(--pa);font-size:11px;line-height:1.35;padding:40px 44px 36px;transform-origin:0 0}
 #paper .ph{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:9px}
-#paper .ph .t{font-family:var(--disp);font-size:26px;letter-spacing:.02em}
+#paper .ph .t{font-family:"Manrope",var(--ui);font-weight:800;font-size:25px;letter-spacing:-.02em}
+#paper .ph .mk{font-size:9px;text-transform:uppercase;letter-spacing:.2em;color:var(--pa);font-weight:700;margin-bottom:4px}
 #paper .ph .s{color:var(--pm);font-size:10px;margin-top:2px}
 #paper .ph .r{text-align:right;color:var(--pm);font-size:10.5px;line-height:1.6}
 #paper .ph .r b{color:var(--ink);font-weight:600}
@@ -277,7 +296,7 @@ footer.foot .brandname{color:var(--brand);font-weight:700;letter-spacing:.01em}
 #paper td .sb{color:var(--pm);font-size:9px;margin-top:1px}
 #paper tr.g td{background:var(--pb);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;border-bottom:0}
 #paper tr.g td .gs{float:right;color:var(--pm);letter-spacing:0;font-weight:600}
-#paper .num{display:inline-block;min-width:16px;height:16px;border-radius:8px;color:#fff;font-size:8.5px;font-weight:600;text-align:center;line-height:16px}
+#paper .num{display:inline-block;min-width:16px;height:16px;border-radius:4px;color:#fff;font-size:8.5px;font-weight:600;text-align:center;line-height:16px}
 #paper .free{color:#4f7a4a;font-weight:600}
 #paper .tot{display:flex;justify-content:flex-end;margin-top:8px}
 #paper .tot div{width:290px;display:flex;justify-content:space-between;border-top:2px solid var(--ink);padding-top:7px;font-size:15px;font-weight:600}
@@ -295,6 +314,7 @@ footer.foot .brandname{color:var(--brand);font-weight:700;letter-spacing:.01em}
   <div class="pill" title="Цены и методика взяты из этого прайса"><span class="dot"></span><span>Прайс от <b id="pdate"></b></span><span class="long">· <span id="pver"></span></span></div>
   <button class="btn sm helpbtn" id="helpBtn"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l7-4.5z"/></svg>Инструкция</button>
   <button class="icon-btn" id="themeBtn" aria-label="Сменить тему"></button>
+  <button class="icon-btn" id="setBtn" aria-label="Настройки руководителя" title="Настройки руководителя"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="9" width="12" height="8" rx="2"/><path d="M7 9V6.5a3 3 0 0 1 6 0V9"/></svg></button>
   <div class="seg" role="tablist"><button role="tab" id="tabCalc" aria-selected="true">Расчёт</button><button role="tab" id="tabLearn" aria-selected="false">Обучение</button><button role="tab" id="tabHist" aria-selected="false">История</button></div>
 </div></header>
 
@@ -306,7 +326,7 @@ footer.foot .brandname{color:var(--brand);font-weight:700;letter-spacing:.01em}
       <label class="f"><span>Заказчик</span><input id="m_client" placeholder="Имя или компания"></label>
       <div class="g2"><label class="f"><span>Телефон</span><input id="m_phone" inputmode="tel"></label><label class="f"><span>Объект</span><input id="m_obj" placeholder="Адрес / ЖК"></label></div>
       <div class="g2"><label class="f"><span>№ документа</span><input id="m_num"></label><label class="f"><span>Дата</span><input id="m_date" type="date"></label></div>
-      <div class="g2"><label class="f"><span>Моя наценка</span><div class="sfx"><input id="m_markup" type="number" step="1"><i>%</i></div></label><label class="f"><span>Скидка клиенту</span><div class="sfx"><input id="m_disc" type="number" step="1"><i>%</i></div></label></div>
+      <div class="g2"><label class="f"><span>Скидка клиенту</span><div class="sfx"><input id="m_disc" type="number" step="1"><i>%</i></div></label></div>
     </section>
     <section class="card step">
       <div class="step-h"><span class="n">2</span><h2>Двери</h2></div>
@@ -342,6 +362,12 @@ footer.foot .brandname{color:var(--brand);font-weight:700;letter-spacing:.01em}
     <div class="vhead"><div><div class="vt" id="vtitle">Как работать с калькулятором</div><div class="vs">Видео-инструкция · 2 минуты 35 секунд</div></div><button class="icon-btn" id="vclose" aria-label="Закрыть">✕</button></div>
     <video id="vplayer" controls preload="metadata" playsinline><source src="instruction.mp4" type="video/mp4"><source src="instruction.webm" type="video/webm"></video>
     <div class="verr" id="verr" hidden>Видео не загрузилось. Файл <b>instruction.mp4</b> должен лежать рядом с программой.</div>
+  </div>
+</div>
+<div class="vmodal" id="smodal" hidden role="dialog" aria-modal="true" aria-labelledby="stitle">
+  <div class="vbox sbox">
+    <div class="vhead"><div><div class="vt" id="stitle">Настройки руководителя</div><div class="vs">Наценка не видна сотрудникам и клиенту</div></div><button class="icon-btn" id="sclose" aria-label="Закрыть">✕</button></div>
+    <div class="sbody" id="sbody"></div>
   </div>
 </div>
 <div class="mbar"><div><div class="l">Итого</div><div class="v" id="mTotal"></div></div><button class="btn pri" id="mPdf">Скачать PDF</button></div>
@@ -773,7 +799,7 @@ function calcAll(){
   const moldRows=Object.values(mold).map(m=>{m.q=Math.round(m.q*100)/100;m.s=r2(m.p*m.q);rrc+=r2(m.rrc)*m.q;return m});
   if(stabQ){const p=4000;extra.push({n:'Комплект стабилизаторов для полотна',sub:'Обязателен для полотен высотой свыше 2350 мм',u:'компл.',q:stabQ,p:k(p),s:r2(k(p)*stabQ)});rrc+=p*stabQ}
   S.extras.forEach(e=>{const q=+e.q||0,p0=+e.p||0;const p=e.mk?k(p0):r2(p0*(1-ds));extra.push({n:e.n||'—',sub:e.sub||'',u:e.u||'шт.',q,p,s:r2(p*q)});rrc+=p0*q});
-  const groups=[['Двери','#8c7a5b',doors],['Погонаж','#4f7a8f',moldRows],['Фурнитура и прочее','#6f8a4f',extra]].filter(g=>g[2].length);
+  const groups=[['Двери','#a68a5b',doors],['Погонаж','#5f6a72',moldRows],['Фурнитура и прочее','#7b876a',extra]].filter(g=>g[2].length);
   groups.forEach(g=>g[2].forEach(r=>tot+=r.s));
   return {groups,tot:r2(tot),rrc:r2(rrc)};
 }
@@ -813,7 +839,7 @@ function renderPaper(){
     return `<tr class="g"><td colspan="6" style="color:${col}">${g}<span class="gs">${gs?fmt(gs):'бесплатно'}</span></td></tr>`+
     rs.map(r=>{i++;return `<tr><td><span class="num" style="background:${col}">${i}</span></td><td><b>${esc(r.n)}</b>${r.sub?`<div class="sb">${esc(r.sub)}</div>`:''}</td><td class="c">${esc(r.u)}</td><td class="n">${String(r.q).replace('.',',')}</td><td class="n">${r.p?fmt(r.p):'<span class="free">0,00</span>'}</td><td class="n">${r.s?fmt(r.s):'<span class="free">бесплатно</span>'}</td></tr>`}).join('')}).join('');
   const sh=S.doors.length>3?190:230;
-  $('#paper').innerHTML=`<div class="ph"><div><div class="t">Эскиз и предварительный расчёт</div><div class="s">Межкомнатные двери в комплекте с погонажными изделиями</div></div>
+  $('#paper').innerHTML=`<div class="ph"><div><div class="mk">Продукция фабрики дверей «Терем»</div><div class="t">Эскиз и предварительный расчёт</div><div class="s">Межкомнатные двери в комплекте с погонажными изделиями</div></div>
    <div class="r">№ <b>${esc(m.num)||'______'}</b><br>от <b>${esc(dt)}</b></div></div>
    <div class="note1">Документ носит ознакомительный характер и <b>не является счётом на оплату</b>. После согласования эскиза и комплектации будет выставлен счёт.</div>
    <div class="cards${S.doors.length===1?' one':''}" style="--n:${S.doors.length===1?1:n};--sh:${sh}px">${cards}</div>
@@ -829,7 +855,7 @@ function renderPaper(){
    <div><div class="l">С эскизом и расчётом ознакомлен</div><div class="ln"></div><div class="c2"><span>подпись заказчика</span><span>дата</span></div></div></div>`;
   $('#sumTotal').textContent=fmt(C.tot);$('#mTotal').textContent=fmt(C.tot);
   const nd=S.doors.reduce((a,d)=>a+(+d.qty||0),0);
-  $('#sumRrc').textContent=`${nd} ${nd%10===1&&nd%100!==11?'дверь':(nd%10>=2&&nd%10<=4&&(nd%100<10||nd%100>=20)?'двери':'дверей')} · по прайсу без наценки ${fmt(C.rrc)}`;
+  $('#sumRrc').textContent=`${nd} ${nd%10===1&&nd%100!==11?'дверь':(nd%10>=2&&nd%10<=4&&(nd%100<10||nd%100>=20)?'двери':'дверей')} · прайс Терем от ${DATA.priceDate}`;
   fitPaper();
   return C;
 }
@@ -859,7 +885,7 @@ function renderDoors(){
     <label class="f"><span>Позиция в прайсе</span><select id="d${i}_model">${c.models.map((mm,j)=>opt(j,mm.n,j==d.model)).join('')}</select></label></div>
     <div class="f"><span>Вид двери на эскизе</span><div class="pics">${imgs.map((im,j)=>`<button data-pic="${j}" aria-pressed="${j==d.pic}"><img alt="" src="data:image/png;base64,${im.d}">${im.l?`<img class="lb" alt="" src="data:image/png;base64,${im.l}">`:''}</button>`).join('')}</div></div>
     <div class="sub-h">Отделка</div>
-    <div class="g2"><label class="f"><span>Покрытие</span><select id="d${i}_coat">${m.coats.map((cc,j)=>opt(j,cc.c+' — '+fmt(cc.p),j==d.coat)).join('')}</select></label>
+    <div class="g2"><label class="f"><span>Покрытие</span><select id="d${i}_coat">${m.coats.map((cc,j)=>opt(j,cc.c,j==d.coat)).join('')}</select></label>
     <label class="f"><span>Цвет</span><input id="d${i}_colorTxt" value="${esc(d.colorTxt)}" placeholder="напр. белый"></label></div>
     <div class="g2"><label class="f"><span>Категория цвета</span><select id="d${i}_colorCat">${COLOR.map((cc,j)=>opt(j,cc[0],j==d.colorCat)).join('')}</select></label>
     <label class="f"><span>Стекло</span><select id="d${i}_glass">${opt(-1,'Без стекла (глухое)',d.glass<0)}${glList.map(([j,g])=>opt(j,g.m+' · '+g.n+' — '+fmt(g.p),j==d.glass)).join('')}</select></label></div>
@@ -914,7 +940,7 @@ function renderExtras(){
   update();
 }
 function bindMeta(){
-  [['num','m_num'],['date','m_date'],['client','m_client'],['phone','m_phone'],['obj','m_obj'],['markup','m_markup'],['disc','m_disc']].forEach(([k,id])=>{
+  [['num','m_num'],['date','m_date'],['client','m_client'],['phone','m_phone'],['obj','m_obj'],['disc','m_disc']].forEach(([k,id])=>{
     const el=$('#'+id); el.value=S.meta[k]??''; el.oninput=()=>{S.meta[k]=el.value;update()};
   });
 }
@@ -932,11 +958,37 @@ function update(){
 }
 $('#addDoor').onclick=()=>{const last=S.doors[S.doors.length-1];const nd=last?JSON.parse(JSON.stringify(last)):newDoor();S.doors.forEach(x=>x._open=false);nd._open=true;S.doors.push(nd);renderDoors()};
 $('#addExtra').onclick=()=>{S.extras.push({n:'',u:'шт.',q:1,p:0,mk:false});renderExtras()};
-$('#newCalc').onclick=()=>{S={meta:{num:'',date:today(),client:'',phone:'',obj:'',markup:S.meta.markup??10,disc:0},doors:[newDoor()],extras:[]};bindMeta();renderDoors();renderExtras();toast('Начат новый расчёт')};
+$('#newCalc').onclick=()=>{S={meta:{num:'',date:today(),client:'',phone:'',obj:'',markup:(sget().markup??S.meta.markup??10),disc:0},doors:[newDoor()],extras:[]};bindMeta();renderDoors();renderExtras();toast('Начат новый расчёт')};
 function toast(t,bad){const e=$('#toast');e.textContent=t;e.classList.toggle('bad',!!bad);clearTimeout(e._t);e._t=setTimeout(()=>e.textContent='',4000)}
 
 // ---------- PDF ----------
 let downloads=null;
+// настройки руководителя (наценка под PIN)
+const SK='terem_owner';
+function sget(){try{return JSON.parse(localStorage.getItem(SK)||'{}')}catch(e){return{}}}
+function sput(o){try{localStorage.setItem(SK,JSON.stringify(o))}catch(e){}}
+async function hpin(p){try{const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('terem:'+p));return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('')}catch(e){let h=0;for(const c of 'terem:'+p)h=(h*31+c.charCodeAt(0))|0;return 'x'+h}}
+{const o=sget(); if(o.markup!=null&&(S.meta.markup==null||S.meta.markup===''))S.meta.markup=o.markup; if(S.meta.markup==null||S.meta.markup==='')S.meta.markup=10;}
+const sm=$('#smodal');let unlocked=false;
+function sRender(){
+  const o=sget(),b=$('#sbody');
+  if(!o.pin){b.innerHTML=`<p class="hint">Задайте PIN-код руководителя. Без него сотрудники не смогут открыть настройки.</p>
+   <div class="g2"><label class="f"><span>Новый PIN (4–8 цифр)</span><input id="sp1" type="password" inputmode="numeric" autocomplete="new-password"></label><label class="f"><span>Повторите PIN</span><input id="sp2" type="password" inputmode="numeric" autocomplete="new-password"></label></div>
+   <div class="smsg" id="smsg"></div><button class="btn pri" id="sok">Сохранить PIN</button>`;
+   $('#sok').onclick=async()=>{const p1=$('#sp1').value.trim(),p2=$('#sp2').value.trim();if(!/^\d{4,8}$/.test(p1)){$('#smsg').textContent='PIN — от 4 до 8 цифр';return}if(p1!==p2){$('#smsg').textContent='PIN-коды не совпадают';return}o.pin=await hpin(p1);sput(o);unlocked=true;sRender()};return}
+  if(!unlocked){b.innerHTML=`<label class="f"><span>PIN-код руководителя</span><input id="spin" type="password" inputmode="numeric" autocomplete="current-password"></label><div class="smsg" id="smsg"></div><button class="btn pri" id="sok">Открыть</button>`;
+   const go=async()=>{if(await hpin($('#spin').value.trim())===o.pin){unlocked=true;sRender()}else{$('#smsg').textContent='Неверный PIN'}};
+   $('#sok').onclick=go;$('#spin').onkeydown=e=>{if(e.key==='Enter')go()};setTimeout(()=>$('#spin').focus(),50);return}
+  b.innerHTML=`<label class="f"><span>Моя наценка к розничной цене прайса</span><div class="sfx"><input id="smk" type="number" step="1" value="${esc(S.meta.markup)}"><i>%</i></div></label>
+   <p class="hint">Наценка добавляется к ценам полотен, погонажа и стабилизатора. В документе клиент видит только итоговые цены. Сейчас по прайсу без наценки: <b>${fmt(calcAll().rrc)}</b>.</p>
+   <div class="smsg ok" id="smsg"></div>
+   <div class="qnav"><button class="btn pri" id="sok">Сохранить</button><button class="btn" id="spch">Сменить PIN</button><button class="btn ghost" id="slock">Закрыть настройки</button></div>`;
+  $('#sok').onclick=()=>{const v=parseFloat($('#smk').value);if(isNaN(v)){$('#smsg').textContent='Введите число';return}S.meta.markup=v;o.markup=v;sput(o);update();$('#smsg').textContent='Сохранено';};
+  $('#spch').onclick=()=>{delete o.pin;sput(o);sRender()};
+  $('#slock').onclick=()=>{unlocked=false;sm.hidden=true};
+}
+$('#setBtn').onclick=()=>{sm.hidden=false;sRender()};
+$('#sclose').onclick=()=>{sm.hidden=true};sm.addEventListener('click',e=>{if(e.target===sm)sm.hidden=true});
 // инструкция
 const vm=$('#vmodal'),vp=$('#vplayer');
 $('#helpBtn').onclick=()=>{vm.hidden=false;$('#verr').hidden=true;try{vp.currentTime=0;const pr=vp.play();if(pr&&pr.catch)pr.catch(()=>{})}catch(e){}};
