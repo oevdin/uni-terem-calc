@@ -5,18 +5,18 @@
 <style>
 /* Layout: рабочий инструмент — тонкая шапка; слева шаги заказа (клиент → двери → доп. позиции), справа закреплённый итог и живой лист документа */
 :root{
-  --bg:#f3f4f5; --s1:#ffffff; --s2:#f6f7f8; --fg:#131517; --mute:#6a7076; --line:#e3e5e8; --line2:#d3d6da;
-  --ink:#131517; --ink-fg:#ffffff; --brand:#4f5fd8; --hi:#0b7d5e; --hi-soft:#e5f4ee; --danger:#b4412b; --desk:#e8eaec;
-  --ui:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif; --disp:"Forum",Georgia,serif;
+  --bg:#f7f6f3; --s1:#ffffff; --s2:#f7f6f3; --fg:#131517; --mute:#6a7076; --line:#e3e5e8; --line2:#d3d6da;
+  --ink:#141414; --ink-fg:#ffffff; --brand:#4f5fd8; --hi:#8c7148; --hi-soft:#f3ece0; --gold:#a68a5b; --sand:#f4efe7; --danger:#b4412b; --desk:#ebe8e3;
+  --ui:"Manrope","Onest",system-ui,-apple-system,"Segoe UI",sans-serif; --disp:"Manrope",system-ui,sans-serif;
   --r:12px; --shadow:0 1px 2px rgba(16,18,20,.04),0 4px 16px rgba(16,18,20,.05);
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0d0e10; --s1:#16181b; --s2:#1c1f22; --fg:#eceef0; --mute:#8e949a; --line:#25282c; --line2:#33373c;
-  --ink:#eceef0; --ink-fg:#111214; --brand:#8f9bff; --hi:#43d19f; --hi-soft:#123528; --danger:#f08b70; --desk:#0a0b0c;
+  --ink:#eceef0; --ink-fg:#111214; --brand:#8f9bff; --hi:#cdb07d; --hi-soft:#2a2418; --gold:#c4a878; --sand:#1d1a16; --danger:#f08b70; --desk:#0a0b0c;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35); color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0d0e10; --s1:#16181b; --s2:#1c1f22; --fg:#eceef0; --mute:#8e949a; --line:#25282c; --line2:#33373c;
-  --ink:#eceef0; --ink-fg:#111214; --brand:#8f9bff; --hi:#43d19f; --hi-soft:#123528; --danger:#f08b70; --desk:#0a0b0c;
+  --ink:#eceef0; --ink-fg:#111214; --brand:#8f9bff; --hi:#cdb07d; --hi-soft:#2a2418; --gold:#c4a878; --sand:#1d1a16; --danger:#f08b70; --desk:#0a0b0c;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35); color-scheme:dark}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -42,6 +42,40 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .icon-btn{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--s1);color:var(--fg);display:grid;place-items:center;cursor:pointer}
 .icon-btn svg{width:18px;height:18px}
 @media (max-width:720px){.pill .long{display:none}}
+/* логотип */
+.tlogo{height:34px;width:auto;display:block}
+.bdiv{width:1px;height:30px;background:var(--line2)}
+.brand .t{font-weight:700}
+.seg button[aria-selected="true"]{box-shadow:inset 0 -2px 0 var(--gold),0 1px 2px rgba(0,0,0,.06)}
+@media (max-width:560px){.bdiv,.brand .s{display:none}.tlogo{height:28px}}
+/* стартовый экран */
+.hero{margin-bottom:22px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;align-items:stretch;background:var(--s1);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+.htext{padding:36px 8px 32px 36px;display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--gold)}
+.hero h1{margin:0;font-size:clamp(28px,3.4vw,44px);line-height:1.05;font-weight:800;letter-spacing:-.035em;max-width:16ch}
+.hero p{margin:0;color:var(--mute);font-size:15px;line-height:1.55;max-width:54ch}
+.hacts{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+.btn.lg{height:46px;padding:0 22px;font-size:14.5px;font-weight:600;border-radius:999px}
+.btn.pri.lg:hover{background:var(--gold);border-color:var(--gold);opacity:1}
+.btn.ghost2{border-color:transparent;background:var(--s2)}
+.hstats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:auto;padding-top:18px;border-top:1px solid var(--line)}
+.hstats b{display:block;font-size:20px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.hstats span{font-size:12px;color:var(--mute)}
+.hdoors{background:var(--sand);display:flex;align-items:flex-end;justify-content:center;gap:clamp(8px,1.6vw,22px);padding:30px 24px 22px;position:relative}
+.hdoors::after{content:"";position:absolute;left:24px;right:24px;bottom:46px;height:1px;background:var(--line2)}
+.hdoors figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:8px;flex:1 1 0;max-width:96px}
+.hdoors img{width:100%;height:auto;aspect-ratio:2/5;object-fit:contain;background:#fff;border:1px solid #d9d2c5;border-radius:3px;box-shadow:0 10px 24px rgba(60,45,20,.12)}
+.hdoors figure:nth-child(odd) img{transform:translateY(-10px)}
+.hdoors figcaption{font-size:11px;color:var(--mute);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;position:relative;z-index:1}
+@media (max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}.htext{padding:24px 20px 20px}.hdoors{order:-1;padding:18px 16px 14px}.hdoors figure{max-width:52px}.hdoors::after{bottom:38px}.hero p{font-size:14px}}
+@media (max-width:520px){.hstats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (prefers-reduced-motion:no-preference){
+ @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1}}
+ .hdoors figure{animation:rise .6s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i)*70ms + .1s)}
+ .htext>*{animation:vin .5s cubic-bezier(.2,.7,.2,1) both}.htext>*:nth-child(2){animation-delay:.05s}.htext>*:nth-child(3){animation-delay:.1s}.htext>*:nth-child(4){animation-delay:.15s}.htext>*:nth-child(5){animation-delay:.2s}
+ .hdoors img{transition:transform .35s cubic-bezier(.2,.7,.2,1)}.hdoors figure:hover img{transform:translateY(-16px)}
+}
 /* разметка */
 main.in{padding-block:22px 28px}
 .layout{display:grid;grid-template-columns:minmax(0,470px) minmax(0,1fr);gap:24px;align-items:start}
@@ -307,8 +341,8 @@ footer.foot .brandname{color:var(--brand);font-weight:700;letter-spacing:.01em}
 </style>
 
 <header class="appbar pad"><div class="in">
-  <div class="brand"><div class="logo" aria-hidden="true"><svg viewBox="0 0 16 20"><rect x="1" y="1" width="14" height="18" rx="1" fill="none" stroke="var(--ink-fg)" stroke-width="1.6"/><rect x="4" y="4" width="8" height="5.5" fill="none" stroke="var(--ink-fg)" stroke-width="1.2"/><circle cx="11.6" cy="12" r="1" fill="var(--ink-fg)"/></svg></div>
-    <div><div class="t">Терем</div><div class="s">Калькулятор дверей</div></div></div>
+  <div class="brand"><img class="tlogo" id="tlogo" alt="terem — двери для жизни"><span class="bdiv"></span>
+    <div><div class="t">Калькулятор дверей</div><div class="s">для дилера · UNICA Doors</div></div></div>
   <div class="pill" title="Цены и методика взяты из этого прайса"><span class="dot"></span><span>Прайс от <b id="pdate"></b></span><span class="long">· <span id="pver"></span></span></div>
   <button class="btn sm helpbtn" id="helpBtn"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l7-4.5z"/></svg>Инструкция</button>
   <button class="icon-btn" id="themeBtn" aria-label="Сменить тему"></button>
@@ -317,6 +351,16 @@ footer.foot .brandname{color:var(--brand);font-weight:700;letter-spacing:.01em}
 </div></header>
 
 <main class="in pad">
+<section class="hero" id="hero">
+  <div class="htext">
+    <div class="eyebrow">Межкомнатные двери фабрики «Терем»</div>
+    <h1>Расчёт дверей по&nbsp;прайсу за&nbsp;пару минут</h1>
+    <p>Полотна, погонаж, наценки за высоту и цвет, стабилизатор — по методике прайс-листа. На выходе аккуратный эскиз с расчётом для клиента.</p>
+    <div class="hacts"><button class="btn pri lg" id="hStart">Начать расчёт<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button><button class="btn lg" id="hLearn">Обучение</button><button class="btn lg ghost2" id="hHelp">Видео-инструкция</button></div>
+    <div class="hstats" id="hstats"></div>
+  </div>
+  <div class="hdoors" id="hdoors" aria-hidden="true"></div>
+</section>
 <div id="viewCalc" class="layout">
   <div class="col" id="form">
     <section class="card step">
@@ -385,7 +429,17 @@ const $=s=>document.querySelector(s);
 const fmt=n=>(Math.round(n*100)/100).toLocaleString('ru-RU',{minimumFractionDigits:2,maximumFractionDigits:2}).replace(/ /g,' ');
 const r2=n=>Math.round((n+1e-9)*100)/100;
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-$('#pdate').textContent=DATA.priceDate;$('#pver').textContent=(DATA.priceVer||'').replace(/ от [0-9.]+/,'');
+$('#pdate').textContent=DATA.priceDate;
+// логотип и стартовый экран
+const LOGOS=/*LOGOS*/null;
+function setLogo(){const dk=document.documentElement.dataset.theme==='dark'||(!document.documentElement.dataset.theme&&matchMedia('(prefers-color-scheme: dark)').matches);$('#tlogo').src='data:image/png;base64,'+(dk?LOGOS.d:LOGOS.l)}
+setLogo();matchMedia('(prefers-color-scheme: dark)').addEventListener('change',setLogo);new MutationObserver(setLogo).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+{const nm=DATA.collections.reduce((s,c)=>s+c.models.length,0);
+ $('#hstats').innerHTML=`<div><b>${DATA.collections.length}</b><span>коллекции</span></div><div><b>${nm}</b><span>моделей</span></div><div><b>${DATA.mold.length}</b><span>позиций погонажа</span></div><div><b>${DATA.priceDate}</b><span>дата прайса</span></div>`;
+ const pick=[['Бергамо',1],['Эклектика',0],['Амелия',1],['Савона',0],['Модерн',2]].filter(([k,i])=>IMGS[k]&&IMGS[k][i]);
+ $('#hdoors').innerHTML=pick.map(([k,j],i)=>`<figure style="--i:${i}"><img src="data:image/png;base64,${IMGS[k][j].d}" alt=""><figcaption>${esc(k)}</figcaption></figure>`).join('');}
+$('#hStart').onclick=()=>{$('#form').scrollIntoView({behavior:'smooth',block:'start'});setTimeout(()=>$('#m_client').focus({preventScroll:true}),400)};
+$('#hLearn').onclick=()=>showTab('learn');$('#hHelp').onclick=()=>$('#helpBtn').click();$('#pver').textContent=(DATA.priceVer||'').replace(/ от [0-9.]+/,'');
 // тема: светлая / тёмная / как в системе
 const ICO={system:'<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="7"/><path d="M10 3a7 7 0 0 0 0 14z" fill="currentColor"/></svg>',light:'<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="3.5"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M4.3 15.7l1.4-1.4M14.3 5.7l1.4-1.4"/></svg>',dark:'<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 12.5A6.5 6.5 0 0 1 7.5 4a6.5 6.5 0 1 0 8.5 8.5z"/></svg>'};
 const THEMES=[['system','Тема: как в системе'],['light','Светлая тема'],['dark','Тёмная тема']];
@@ -762,7 +816,7 @@ $('#saveHist').onclick=async()=>{
   if(db){try{await db.collection('data/users/'+uid).add(rec);toast('Сохранено в историю')}catch(e){toast('Не удалось сохранить'+(e&&e.code?' ('+e.code+')':''),true)}}
   else{try{const l=localHist();l.unshift({id:String(rec.ts),...rec});localStorage.setItem('terem_hist',JSON.stringify(l.slice(0,200)));toast('Сохранено в историю (в этом браузере)')}catch(e){toast('Не удалось сохранить',true)}}
 };
-function showTab(t){$('#viewCalc').hidden=t!=='calc';$('#viewHist').hidden=t!=='hist';$('#viewLearn').hidden=t!=='learn';$('#tabCalc').setAttribute('aria-selected',t==='calc');$('#tabHist').setAttribute('aria-selected',t==='hist');$('#tabLearn').setAttribute('aria-selected',t==='learn');$('.mbar').style.visibility=t==='calc'?'':'hidden';if(t==='hist')renderHist();else if(t==='learn')window.initLearn();else fitPaper()}
+function showTab(t){$('#hero').hidden=t!=='calc';$('#viewCalc').hidden=t!=='calc';$('#viewHist').hidden=t!=='hist';$('#viewLearn').hidden=t!=='learn';$('#tabCalc').setAttribute('aria-selected',t==='calc');$('#tabHist').setAttribute('aria-selected',t==='hist');$('#tabLearn').setAttribute('aria-selected',t==='learn');$('.mbar').style.visibility=t==='calc'?'':'hidden';if(t==='hist')renderHist();else if(t==='learn')window.initLearn();else fitPaper()}
 $('#tabCalc').onclick=()=>showTab('calc');$('#tabHist').onclick=()=>showTab('hist');$('#tabLearn').onclick=()=>showTab('learn');
 
 bindMeta();renderDoors();renderExtras();
