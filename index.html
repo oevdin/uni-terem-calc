@@ -21,6 +21,7 @@
   --ink:#eceef0; --ink-fg:#111214; --brand:#8f9bff; --hi:#43d19f; --hi-soft:#123528; --danger:#f08b70; --desk:#0a0b0c;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35); color-scheme:dark}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{background:var(--bg)}
 body{color:var(--fg);font-family:var(--ui);font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--s1)}
@@ -155,6 +156,64 @@ details.qty[open] summary::before{content:"－ ";}
 .hrow .m{font-size:12px;color:var(--mute)}
 .hrow .s{font-variant-numeric:tabular-nums;font-weight:600}
 .empty{color:var(--mute);padding:36px;border:1px dashed var(--line2);border-radius:var(--r);text-align:center;max-width:860px}
+/* обучение */
+.learn{display:grid;grid-template-columns:260px minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:900px){.learn{grid-template-columns:minmax(0,1fr)}}
+.lnav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);padding:8px;display:flex;flex-direction:column;gap:2px}
+@media (max-width:900px){.lnav{position:static;flex-direction:row;overflow-x:auto}.lnav button{white-space:nowrap}}
+.lnav button{display:flex;gap:10px;align-items:center;text-align:left;border:0;background:none;font:inherit;color:var(--fg);padding:9px 10px;border-radius:9px;cursor:pointer}
+.lnav button:hover{background:var(--s2)}
+.lnav button[aria-current="true"]{background:var(--hi-soft);color:var(--fg);font-weight:600}
+.lnav .ln{width:22px;height:22px;border-radius:6px;border:1px solid var(--line2);display:grid;place-items:center;font-size:11px;color:var(--mute);flex:none}
+.lnav button[aria-current="true"] .ln{background:var(--hi);border-color:var(--hi);color:#fff}
+.lcontent{padding:26px 28px 30px;min-width:0;line-height:1.55}
+@media (max-width:560px){.lcontent{padding:18px 16px}}
+.lcontent .lh{font-size:26px;font-weight:700;letter-spacing:-.01em;margin:0 0 12px}
+.lcontent h3{font-size:16px;margin:24px 0 10px}
+.lcontent p{margin:0 0 10px;max-width:75ch}
+.lcontent ul{margin:0 0 10px;padding-left:20px}
+.lead{font-size:16px;color:var(--fg)}
+.lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin:12px 0}
+.lbox{border:1px solid var(--line);background:var(--s2);border-radius:11px;padding:14px}
+.lbox b{display:block;margin-bottom:4px}.lbox p{margin:0;font-size:13.5px;color:var(--mute)}
+.ltw{overflow-x:auto;margin:6px 0 12px}
+.lt{border-collapse:collapse;width:100%;font-size:13.5px}
+.lt th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);font-weight:600;padding:8px 10px;border-bottom:1.5px solid var(--line2)}
+.lt td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.lnote{font-size:12.5px;color:var(--mute);background:var(--s2);border-left:3px solid var(--hi);border-radius:6px;padding:9px 12px;margin:8px 0 12px}
+.lsrc{font-size:12px;color:var(--mute);margin-top:22px!important;border-top:1px solid var(--line);padding-top:12px}
+.sws{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+.sw{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px}
+.sw .chip{width:38px;height:38px;border-radius:8px;border:1px solid rgba(0,0,0,.12);flex:none}
+.sw b{display:block;font-size:13.5px}.sw small{color:var(--mute);font-size:12px}
+.lcoll{display:flex;flex-direction:column;gap:8px}
+.lcard{border:1px solid var(--line);border-radius:11px;overflow:hidden}
+.lcard summary{cursor:pointer;padding:12px 14px;display:flex;flex-direction:column;gap:2px;list-style:none}
+.lcard summary:hover{background:var(--s2)}
+.lcard .lt1{font-weight:600}.lcard .lt2{font-size:12.5px;color:var(--mute)}
+.lcard[open] summary{border-bottom:1px solid var(--line)}
+.lcard .ltw{padding:0 14px}
+.lpics{display:flex;gap:8px;overflow-x:auto;padding:12px 14px}
+.lpics figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 4px;display:flex;flex-direction:column;align-items:center;gap:4px;flex:none}
+.lpics img{height:96px}.lpics .lb{height:12px;max-width:80px;object-fit:contain}
+.qstart{display:flex;gap:10px;align-items:end;flex-wrap:wrap;margin:14px 0}
+.qstart .f{width:min(320px,100%)}
+.qhead{display:flex;justify-content:space-between;font-size:13px;color:var(--mute)}
+.qbar{height:6px;border-radius:3px;background:var(--s2);margin:8px 0 18px;overflow:hidden}.qbar span{display:block;height:100%;background:var(--hi);transition:width .3s}
+.qq{font-size:22px;line-height:1.3;margin:0 0 16px;max-width:60ch}
+.qopts{display:grid;gap:8px;max-width:680px}
+.qo{text-align:left;font:inherit;font-size:15px;padding:13px 16px;border:1px solid var(--line2);border-radius:11px;background:var(--s1);color:var(--fg);cursor:pointer}
+.qo:hover:not(:disabled){border-color:var(--fg)}
+.qo.ok{border-color:var(--hi);background:var(--hi-soft)}
+.qo.bad{border-color:var(--danger);color:var(--danger)}
+.qo:disabled{cursor:default}
+.qex{margin-top:14px;padding:12px 14px;border-radius:10px;max-width:680px;font-size:14px}
+.qex.ok{background:var(--hi-soft)}.qex.bad{background:var(--s2);border-left:3px solid var(--danger)}
+.qnav{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.qres{text-align:center;padding:10px 0 6px}.qres .qnav{justify-content:center}
+.qbig{font-size:56px;font-weight:700;letter-spacing:-.02em;color:var(--hi)}
+.qres h2{margin:4px 0}
+.qres p{margin:0 auto 10px}
 /* подвал */
 footer.foot .in{display:flex;align-items:center;justify-content:center;gap:10px;padding-block:22px 30px;border-top:1px solid var(--line);color:var(--mute);font-size:12.5px}
 footer.foot .u{width:22px;height:22px;border-radius:6px;background:var(--ink);color:var(--ink-fg);display:grid;place-items:center;font-weight:700;font-size:12px}
@@ -211,7 +270,7 @@ footer.foot .brandname{color:var(--brand);font-weight:700;letter-spacing:.01em}
   <div class="pill" title="Цены и методика взяты из этого прайса"><span class="dot"></span><span>Прайс от <b id="pdate"></b></span><span class="long">· <span id="pver"></span></span></div>
   <button class="btn sm helpbtn" id="helpBtn"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l7-4.5z"/></svg>Инструкция</button>
   <button class="icon-btn" id="themeBtn" aria-label="Сменить тему"></button>
-  <div class="seg" role="tablist"><button role="tab" id="tabCalc" aria-selected="true">Расчёт</button><button role="tab" id="tabHist" aria-selected="false">История</button></div>
+  <div class="seg" role="tablist"><button role="tab" id="tabCalc" aria-selected="true">Расчёт</button><button role="tab" id="tabLearn" aria-selected="false">Обучение</button><button role="tab" id="tabHist" aria-selected="false">История</button></div>
 </div></header>
 
 <main class="in pad">
@@ -247,6 +306,10 @@ footer.foot .brandname{color:var(--brand);font-weight:700;letter-spacing:.01em}
       <div class="paperbox" id="paperbox"><div id="paper"></div></div></div>
   </aside>
 </div>
+<div id="viewLearn" class="learn" hidden>
+  <nav class="lnav card" id="lnav" aria-label="Разделы обучения"></nav>
+  <article class="lcontent card" id="lcontent"></article>
+</div>
 <div id="viewHist" hidden><div class="hist" id="histList"></div></div>
 </main>
 <div class="vmodal" id="vmodal" hidden role="dialog" aria-modal="true" aria-labelledby="vtitle">
@@ -264,6 +327,210 @@ const IMGS = {"\u041f\u043e\u0440\u0442\u0435": [{"d": "iVBORw0KGgoAAAANSUhEUgAA
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+// ================= ОБУЧЕНИЕ =================
+(function(){
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const PD=DATA.priceDate;
+const src=`<p class="lsrc">Источник: прайс-лист Терем от ${PD}. Сроки изготовления — в личном кабинете дилера на teremdoor.ru.</p>`;
+const tbl=(head,rows)=>`<div class="ltw"><table class="lt"><tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</table></div>`;
+const sw=(hex,name,code,note)=>`<div class="sw"><span class="chip" style="background:${hex}"></span><div><b>${name}</b><small>${code}${note?' · '+note:''}</small></div></div>`;
+const GROUPS=[
+ ['Современные',['Порте','Порте 4Ал','Слот','Ветро','Дуэт','Твист','Стандарт']],
+ ['Неоклассические',['Фьюжн','Элеганс','Сиена','Савона','Модерн','Неоклассик']],
+ ['Классические',['Россо','Е-Классик','Амелия']],
+ ['Дизайнерские',['Дизайн (Юнит, Капричио…)','Юнит Слот','Бриз','Е-Дизайн (Степ, Подио, Лайн)','Эклектика']],
+ ['Функциональные',['Жалюзи']]];
+const COATS={'Порте':'грунт / эмаль / шпон / ПВХ','Порте 4Ал':'грунт / эмаль / шпон / ПВХ','Слот':'эмаль / шпон / ПВХ','Ветро':'эмаль / шпон / ПВХ','Дуэт':'эмаль / ПВХ','Твист':'эмаль / ПВХ','Стандарт':'эмаль / шпон','Фьюжн':'грунт / эмаль / ПВХ','Элеганс':'грунт / эмаль','Сиена':'эмаль','Савона':'эмаль','Модерн':'эмаль','Неоклассик':'шпон','Россо':'шпон','Е-Классик':'эмаль','Амелия':'эмаль','Дизайн (Юнит, Капричио…)':'эмаль / шпон','Юнит Слот':'шпон','Бриз':'эмаль / шпон','Е-Дизайн (Степ, Подио, Лайн)':'эмаль','Эклектика':'эмаль','Жалюзи':'эмаль'};
+const SHEET=Object.fromEntries(DATA.collections.map(c=>[c.name,c.sheet]));
+const fmt=n=>(Math.round(n*100)/100).toLocaleString('ru-RU',{maximumFractionDigits:2}).replace(/ /g,' ');
+
+function collections(){
+  return GROUPS.map(([g,list])=>`<h3>${g}</h3><div class="lcoll">${list.map(n=>{
+    const c=DATA.collections.find(x=>x.name===n); if(!c)return '';
+    const ims=(IMGS[SHEET[n]]||[]).slice(0,10);
+    const minp=Math.min(...c.models.flatMap(m=>m.coats.map(x=>x.p)));
+    return `<details class="lcard"><summary><span class="lt1">${esc(n)}</span><span class="lt2">${COATS[n]||''} · ${c.models.length} поз. в прайсе · от ${fmt(minp)}</span></summary>
+    <div class="lpics">${ims.map(im=>`<figure><img alt="" src="data:image/png;base64,${im.d}">${im.l?`<img class="lb" alt="" src="data:image/png;base64,${im.l}">`:''}</figure>`).join('')}</div>
+    ${tbl(['Позиция в прайсе','Покрытия и цена полотна 2000/2100'],c.models.map(m=>[esc(m.n),m.coats.map(x=>esc(x.c)+' — '+fmt(x.p)).join('<br>')]))}</details>`}).join('')}</div>`).join('')+
+  `<div class="lnote">Цены в таблицах — розничные цены прайса (РРЦ) за полотно 2000/2100 мм без наценок за размер и опции.</div>`;
+}
+const T={
+ terem:{t:'Терем: с чего начать',h:()=>`
+  <p class="lead">Терем — фабрика межкомнатных дверей из Ульяновска. Мы работаем как дилер: продаём двери, погонаж и комплектующие по прайс-листу фабрики.</p>
+  <div class="lgrid">
+   <div class="lbox"><b>Прайс-лист</b><p>Excel-файл с ценами РРЦ (рекомендованные розничные). Внутри — коллекции, погонаж, перегородки, стеновые панели, наценки за габариты и опции. Перед каждым расчётом проверяйте дату прайса.</p></div>
+   <div class="lbox"><b>Комплект двери</b><p>Полотно + коробка (стойки) + наличники. Стандартный комплект прайса: 1 полотно, 2,5 стойки короба L 2120 мм, 5 плоских наличников L 2150 мм.</p></div>
+   <div class="lbox"><b>Цена полотна</b><p>Базовая цена + все опции + наценки (покрытие, габарит, нестандарт) + стабилизатор — так считает фабрика.</p></div>
+   <div class="lbox"><b>Логистика</b><p>Для регионов РФ прайс даёт рекомендуемые наценки по удалённости от Ульяновска: до 600 км 0%, дальше от 3% до 30%.</p></div>
+  </div>
+  <h3>Как устроен ассортимент</h3>
+  ${tbl(['Раздел прайса','Что входит'],[['Межкомнатные двери','5 групп коллекций: современные, неоклассические, классические, дизайнерские, функциональные'],['Погонаж','Короба, наличники, доборы (системы L, Q, M, Z), алюминиевый погонаж, стыковочные элементы, плинтусы'],['Перегородки','Корса / Рейс, Грация'],['Прочие изделия','Стеновые панели, фрамуги и накладки, рейки, порталы (колонны и карнизы)'],['Наценки','За габариты, за покрытия и цвета, за изменение моделей, стабилизатор']])}
+  <h3>Сокращения в прайсе</h3>
+  ${tbl(['Обозначение','Значение'],[['ДГ','дверь глухая'],['ДО','дверь остеклённая'],['ДГО','глухая с остеклением (частично)'],['2Al / 3Al / 4Al','алюминиевая кромка с 2-х, 3-х сторон или по периметру'],['РРЦ','рекомендованная розничная цена'],['СМ0 / СМ1 / СМ2','стекло прозрачное / матовое с одной / с двух сторон'],['RAL / NCS','международные каталоги цветов для окраски эмалью'],['0GL / 5GL / 20GL','степень блеска лака: чем больше число, тем сильнее блеск']])}`},
+ coll:{t:'Коллекции и модели',h:collections},
+ paint:{t:'Покрытия и краски',h:()=>`
+  <p class="lead">Терем выпускает двери в четырёх видах отделки: <b>эмаль</b>, <b>натуральный шпон</b>, <b>ПВХ / ПЭТ-плёнка</b> и <b>грунт</b> (под покраску на объекте).</p>
+  <h3>Эмаль — базовые цвета, без наценки</h3>
+  <div class="sws">${[['#f7f6f2','Белая','авторский'],['#efebdc','Молочно-белая','RAL 9010'],['#efe6d2','Крем','авторский'],['#e3e6e1','Облачная','NCS S 1502-G'],['#8f9392','Телегрей','RAL 7047'],['#d0c8c2','Дымчатая','NCS S 2002-Y50R'],['#dccdc6','Пудра','NCS S 2005-Y80R'],['#b5a497','Какао','NCS S 3005-Y50R'],['#b6b3a8','Серый шёлк','RAL 7044'],['#b8b8bd','Ирис (серая)','авторский']].map(x=>sw(...x)).join('')}</div>
+  <h3>Эмаль — базовые цвета с доп. наценкой +5%</h3>
+  <div class="sws">${[['#a8a8a6','Галечная','NCS S 3500-N'],['#6d6e45','Зелёная','NCS S 6010-G50Y'],['#3f4744','Пихтовая','NCS S 7005-B80G'],['#4c4650','Лиловая','NCS S 7005-R20B'],['#57483f','Коричневая','NCS S 7005-Y80R'],['#43474b','Антрацит','NCS S 7502-B'],['#7b7e7c','Гриджио','RAL 7045']].map(x=>sw(...x)).join('')}</div>
+  <div class="lnote">Цвета на экране приблизительные — показывайте клиенту образцы. Эмаль бывает гладкая, брашированная (с фактурой) и «по ясеню» (эмаль на шпоне ясеня, видна текстура дерева).</div>
+  <h3>Окраска по RAL / NCS</h3>
+  <p>Любой цвет каталога RAL или NCS — <b>+20%</b> к изделию. Кроме перламутровых, люминесцентных и «металлик». Подбор по образцу клиента — <b>+30%</b>. Индивидуальный подбор покрытия по дизайну заказчика — до <b>+100%</b>, срок согласовывается с фабрикой.</p>
+  <p>В ремкомплект по эмали и ясеню входят эмаль (100 г), отвердитель (75 г) и бутил (25 г), по дубу — морилка.</p>
+  <h3>Натуральный шпон</h3>
+  ${tbl(['Группа','Декоры','Блеск'],[['Файн Лайн 1 (FL1)','DUNA 607 S, DUNA 624 S, ESPRESSO (орех) 021 C','5GL'],['Файн Лайн 2 (FL2)','DUNA 1050C, ESPRESSO 1017M, ESPRESSO 1604C','—'],['Дуб','Песочный*, Имбирь*, Кварц*, Мускат, Светлый дуб, Тёмный дуб, Марракеш, Морёный дуб','0 / 5 / 20GL'],['Дуб с эффектами','Кофе, Шоколад, Янтарь','5GL'],['Орех','Американский орех','5 / 20GL'],['Ясень','также основа для эмали «по ясеню»','—']])}
+  <div class="lnote">* Дуб Песочный, Имбирь и Кварц — только для щитовых (гладких) полотен. Светлый дуб матовый (5GL) и Американский орех (5GL) — +5%. Радиальный шпон дуба — +15%. Файн Лайн — реконструированный шпон: ровный рисунок без сучков, дешевле натурального дуба.</div>
+  <h3>ПВХ / ПЭТ-плёнки (только щитовые полотна)</h3>
+  ${tbl(['Тип','Декоры'],[['Однотонные ПЭТ','Вайт, Лайт Грей'],['Под дерево','Maderaira oak amber, Maderaira oak sand (вертикаль), Орех NY светлый, смоук, классический'],['Фактурные ORIGINAL','Monte white soft, Ice cacao, Скол камня грей, Бетон известковый, Бетон серый, Камень тёмный']])}
+  <h3>Наценки за отделку</h3>
+  ${tbl(['Вариант','Наценка'],[['Разные цвета сторон полотна при одном покрытии','+15% к более дорогому'],['Разные покрытия сторон (эмаль/шпон и т. п.)','+15% к более дорогому + обязательный стабилизатор'],['Окраска молдингов, кромки','3 500 за комплект'],['Стеновые панели с покрытием с 2-х сторон','+70%']])}`},
+ glass:{t:'Стёкла и зеркала',h:()=>`
+  <p class="lead">Стекло ставится в остеклённые модели (ДО, ДГО). Цена стекла в прайсе — доплата к полотну и зависит от модели и размера проёма под стекло.</p>
+  <h3>Матирование и цвет</h3>
+  ${tbl(['Код','Что это'],[['СМ0','прозрачное стекло'],['СМ1','матовое с одной стороны'],['СМ2','матовое с двух сторон'],['Цвета','белое, бронза, грей (тонированные)']])}
+  <h3>Виды декора</h3>
+  <div class="lgrid">
+   <div class="lbox"><b>Без декора 4 мм</b><p>СМ0, СМ1 или СМ2 — самый доступный вариант.</p></div>
+   <div class="lbox"><b>Алмазная гравировка</b><p>СМ1 + рисунок гравировкой: Псевдофацет, Решётка, Римини, Сетка, Милан, Парма, Ромбы.</p></div>
+   <div class="lbox"><b>УФ-печать</b><p>Рисунок печатается на стекле: Прованс, Винтаж, Акант, Лилия, Эклектика. Цвет рисунка: белый, лак, коричневый, умбра.</p></div>
+   <div class="lbox"><b>Рифлёное «Флутис» 4 мм</b><p>Вертикальные полосы, белое, бронза или грей. Одно из самых дорогих стёкол.</p></div>
+   <div class="lbox"><b>Кафедрал 4 мм</b><p>Фактурное прозрачное стекло.</p></div>
+   <div class="lbox"><b>Фацет 20 мм</b><p>Стекло с гранью по краю (Амелия) — дороже обычного.</p></div>
+   <div class="lbox"><b>Триплекс 4+4 мм</b><p>Два стекла с плёнкой — безопасное (Стандарт, Ветро 17, перегородки Корса/Рейс).</p></div>
+   <div class="lbox"><b>Лакобель</b><p>Окрашенное непрозрачное стекло (Ветро 11, Ветро 20, стеновые панели).</p></div>
+   <div class="lbox"><b>Зеркала</b><p>Серебро, бронза, графит; есть «сатин» (матовые). Порте 39-01/52-01 — зеркало с одной стороны, -11 — с двух.</p></div>
+  </div>
+  <h3>Перегородки и спецстёкла</h3>
+  <p>В перегородках Корса/Рейс: триплекс флоат, бронза, грей, белый и серый, Optiwhite (сверхпрозрачное), Дарк Грей, дизайнерские рифлёные 8 мм Moru-Ultra, Moru-Rainbow, Estriado. Матирование СМ1 +5%, СМ2 +10%.</p>
+  <div class="lnote">Закалка стекла — доплата; закалка в цвете бронза и евробронза не производится.</div>`},
+ mold:{t:'Погонаж',h:()=>`
+  <p class="lead">Погонаж — всё, что обрамляет проём: коробка (стойки), наличники, доборы, притворная планка.</p>
+  ${tbl(['Система','Конструкция','Для каких коллекций'],[['L','телескопический короб 34×75, плоские и фигурные наличники','классические, неоклассические и современные (Стандарт, Техно, Твист, Дизайн); стандарт для комплектов'],['Q','компланарный короб 34×72 — наличник в одной плоскости с коробом','Техно, Твист, Дизайн'],['RQ','компланарный, обратное открывание (короб 34×69)','современные модели с обратным открыванием'],['SQ, К 69, RK','компланарные короба для соединения со стеновыми панелями','двери в панелях'],['M','клеевое крепление, короб 34×72, наличник 15×85','Е-Классик, Прованс'],['Алюминиевый','короба ЦА 59, прямое/обратное, кромки 2AL/3AL/4AL','Порте, Слот, скрытые двери']])}
+  <h3>Наличники</h3>
+  <p><b>Плоские:</b> 10×50, 10×75, 10×90, 16×75, 16×90, 16×110. <b>Фигурные:</b> WL 12×85, Этна 16×85, Комо 16×90, ML 16×85 (база 2400 мм), Арно, Степ, Лацио 16×110 (база 2700 мм), Модерн 23×110.</p>
+  <h3>Доборы (расширители)</h3>
+  <p>Нужны, когда стена толще коробки. Ширина 100–1000 мм с шагом 100 мм. Нестандартная ширина считается по ближайшему большему размеру и подрезается. Направление рисунка — вдоль длинной стороны.</p>
+  <h3>Длины и наценки</h3>
+  ${tbl(['Высота полотна','Длина погонажа','Короб, плоские наличники','Наличники с базой 2400'],[['до 2000','2120 / 2150','0%','0%'],['2100–2200','2400','+10%','0%'],['2300–2500','2700','+30%','+20%'],['2600–2800','3000','+50%','+40%'],['до 2900','3500 (только Q, RQ)','+135%','—']])}
+  <h3>Дополнительно</h3>
+  <p>Стыковочные элементы: шашки (верх) и пьедесталы (низ) для классических порталов. Плинтусы: плоский, классический, Модерн 110, Арно 110, Step, накладки на скрытый плинтус. Порталы: карнизы Верона, Россо и колонны.</p>`},
+ rules:{t:'Правила прайса',h:()=>`
+  <h3>Наценки за габариты полотна (ширина 400–900)</h3>
+  ${tbl(['Высота','до 1850','до 2000/2100','до 2200–2300','до 2400','до 2500','до 2600','до 2700–2900','до 3000','до 3450*'],[['Наценка','+10%','0%','+15%','+30%','+35%','+40%','+55%','+70%','+120%']])}
+  <div class="lnote">Нестандартная ширина 450–950 (шаг 50) и 1000–1100 — свои, более высокие наценки. * Высота до 3450 — только Porte в эмали. При шаге 10 мм — наценка 70% к ближайшему размеру.</div>
+  <h3>Стабилизатор — обязателен</h3>
+  <ul><li>для полотен выше 2350 мм;</li><li>для двусторонних полотен из разных материалов (эмаль/шпон, эмаль/ПВХ, ПВХ/шпон) — при любой высоте;</li><li>для полотен с разными моделями сторон — при любой высоте.</li></ul>
+  <p>Цена — 4 000 за полотно (по желанию клиента, когда не обязателен, — 5 000).</p>
+  <h3>Изменение моделей</h3>
+  <ul><li>разные модели сторон при одном покрытии — по цене более дорогой модели;</li><li>изменение модельного ряда — +25%, только по согласованию с технологами фабрики;</li><li>разные покрытия сторон — ещё +15%; если отличаются и дизайн, и покрытие — наценки складываются.</li></ul>
+  <h3>Фрамуги и накладки</h3>
+  <p>Фрамуга = цена соответствующего полотна; если высота фрамуги до 1000 мм — цена полотна × 0,7. Накладка = цена полотна × коэффициент толщины: 6–8 мм 0,6; 10 мм 0,8; 12–16 мм 0,85; 22 мм 0,9.</p>
+  <h3>Двери для объектов</h3>
+  ${tbl(['Опция','Цена'],[['Толщина 44 мм','полотно +15%'],['Толщина 52 мм','полотно +25%'],['Толщина 59 мм','полотно +35%'],['Толщина 66 мм','полотно +80%'],['Огнестойкость тип 30','полотно +70%, погонаж +10%, спецфурнитура'],['Огнестойкость тип 45','полотно +120%, погонаж +50%, спецфурнитура'],['Цельнозаполненное полотно','полотно + 3 500'],['Для пищеблоков','Ветро 11 +25%']])}
+  <h3>Скрытые двери</h3>
+  <p>Полотно Porte 01 под покраску (грунт), универсальный алюминиевый короб ЦА 59, скрытые петли (2 шт. до 2200 мм, 3 шт. выше), магнитный замок. Бывают прямого и обратного открывания, с алюминиевой кромкой по периметру и без.</p>
+  <h3>Упаковка и мелочи</h3>
+  ${tbl(['Позиция','РРЦ'],[['Жёсткая упаковка, деревянный короб (до 8 полотен)','6 300'],['Мягкая упаковка за изделие','850'],['Палетирование (до 8 полотен)','2 000'],['Ремкомплект по дубу (морилка)','350'],['Ремкомплект по ясеню / эмаль базовая','700'],['Ремкомплект RAL/NCS (до 1 кг)','1 650'],['Уплотнитель Д-10П/3, MSD 02, УС 442','50']])}`},
+ other:{t:'Перегородки и панели',h:()=>`
+  <h3>Перегородки</h3>
+  <div class="lgrid">
+   <div class="lbox"><b>Корса / Рейс</b><p>Цена за м². Каркас в эмали или шпоне (ясень, дуб, орех), стекло триплекс 4+4 мм, зеркала или дизайнерские рифлёные 8 мм. В Рейс рифлёное стекло не применяется.</p></div>
+   <div class="lbox"><b>Грация</b><p>Цена за м², эмаль, стандартные цвета или RAL/NCS. Стекло без декора, фацет или псевдофацет. Патинирование багета +2–3%.</p></div>
+  </div>
+  <h3>Стеновые панели</h3>
+  <p>Щитовые (плоские, плоские комбинированные «Юнит», реечные, фрезерованные) и филёнчатые (багетные). Толщина 10, 12, 16, 22 мм. Цена за м² (фрезерованные 450×450 — за штуку, кратно 4). Отделка: ПВХ, эмаль, шпон, зеркало, лакобель. Изготавливаются только по эскизу; выше 3000 мм — с шагом 100 мм.</p>
+  <p>Типовые ПВХ-панели QUADRA 500×500 (кратно 8), MEDIA 1100×500 (кратно 4), LUNGO 2700×300 (кратно 5) собираются на профилях: стартовом, соединительном, угловом (хром, чёрный, RAL/NCS +20%).</p>
+  <h3>Рейки</h3>
+  <p>Панельные 33×33, 39×39, 45×45 и фоновые 33/39/45×10, длина 2700 мм (3000 мм — в шпоне и эмали). Рейки для перегородок 50×100×2700 — кратно 5, декоративные — кратно 12.</p>
+  <h3>Полка / фасад</h3>
+  <p>Плоская панель 16 мм с облицовкой со всех сторон — цена за м², эмаль или шпон.</p>`},
+};
+const ORDER=[['terem','Терем: с чего начать'],['coll','Коллекции и модели'],['paint','Покрытия и краски'],['glass','Стёкла и зеркала'],['mold','Погонаж'],['rules','Правила прайса'],['other','Перегородки и панели'],['quiz','Тест']];
+
+// --------- тест ---------
+const Q=[
+ ['Что входит в стандартный комплект двери по прайсу Терем?',['Полотно, 2,5 стойки короба и 5 наличников','Полотно и 2 наличника','Полотно, 3 стойки и 6 наличников','Только полотно'],0,'Комплект прайса: полотно, 2,5 стойки короба L 2120 мм и 5 плоских наличников L 2150 мм.'],
+ ['Полотно какой высоты обязательно комплектуется стабилизатором?',['Выше 2100 мм','Выше 2350 мм','Выше 2500 мм','Только 3000 мм'],1,'Стабилизатор обязателен для полотен выше 2350 мм, а также для двусторонних полотен из разных материалов или разных моделей.'],
+ ['Сколько стоит обязательный стабилизатор по прайсу (РРЦ)?',['2 000','3 500','4 000','5 000'],2,'Обязательный — 4 000 за полотно. По желанию клиента — 5 000.'],
+ ['Какая наценка к полотну шириной 800 мм при высоте 2300 мм?',['0%','+15%','+30%','+35%'],1,'2200 и 2300 попадают в одну ступень «до 2300» — +15%.'],
+ ['Какая наценка к полотну высотой 2500 мм (ширина 700)?',['+15%','+30%','+35%','+55%'],2,'До 2500 мм — +35%.'],
+ ['Какой длины нужен короб для полотна высотой 2500 мм?',['2120 мм','2400 мм','2700 мм','3000 мм'],2,'Для полотен 2300–2500 мм нужен погонаж 2700 мм (+30% к коробу).'],
+ ['Сколько стоит окраска эмалью по RAL / NCS?',['Бесплатно','+5%','+20%','+30%'],2,'Окраска по RAL/NCS — +20%, кроме перламутровых, люминесцентных и «металлик».'],
+ ['Сколько стоит подбор эмали по образцу клиента?',['+10%','+20%','+30%','+100%'],2,'Подбор по образцу клиента — +30%.'],
+ ['Какой цвет эмали из базовых соответствует RAL 9010?',['Белая','Молочно-белая','Крем','Облачная'],1,'Молочно-белая — RAL 9010. Белая и Крем — авторские цвета.'],
+ ['Сколько стоят «базовые цвета с доп. наценкой» (Антрацит, Гриджио, Зелёная…)?',['0%','+5%','+15%','+20%'],1,'Базовые цвета с дополнительной наценкой — +5%.'],
+ ['Что значит СМ1?',['Прозрачное стекло','Матовое с одной стороны','Матовое с двух сторон','Зеркало'],1,'СМ0 — прозрачное, СМ1 — матовое с одной стороны, СМ2 — с двух.'],
+ ['Как называется рифлёное стекло с вертикальными полосами в коллекциях Терем?',['Кафедрал','Флутис','Лакобель','Триплекс'],1,'Флутис — рифлёное стекло 4 мм, белое, бронза или грей.'],
+ ['Что такое триплекс 4+4?',['Два стекла 4 мм, склеенные плёнкой','Стекло толщиной 44 мм','Зеркало с двух сторон','Матовое стекло'],0,'Триплекс — два стекла с плёнкой между ними, безопасное: при разбитии осколки держатся на плёнке.'],
+ ['Какие покрытия бывают только у щитовых (гладких) полотен?',['Эмаль','ПВХ/ПЭТ и Дуб Песочный, Имбирь, Кварц','Ясень','Орех'],1,'ПВХ/ПЭТ-плёнки и дубы Песочный, Имбирь, Кварц — только для щитовых полотен.'],
+ ['Что дешевле при одной модели: Файн Лайн 1 или натуральный дуб?',['Дуб','Файн Лайн 1','Одинаково','Зависит от цвета'],1,'Файн Лайн — реконструированный шпон, он дешевле дуба. Например, Юнит 5: FL1 — 34 453, дуб — 38 606.'],
+ ['Как рассчитать фрамугу высотой 800 мм?',['Цена полотна','Цена полотна × 0,7','Цена полотна × 0,5','Бесплатно'],1,'Фрамуга до 1000 мм — цена соответствующего полотна × 0,7; выше — по цене полотна.'],
+ ['Добор какой ширины берут, если стена 200 мм, а короб 75 мм?',['100 мм','125 мм — режут на заказ','200 мм','300 мм'],2,'Нужно 125 мм; доборы делают с шагом 100 мм, поэтому берут 200 мм и подрезают.'],
+ ['Какая система погонажа компланарная (наличник в одной плоскости с коробом)?',['L','Q','M','Z'],1,'Q — компланарная система, применяется в Техно, Твист, Дизайн.'],
+ ['Для каких коллекций клеевой погонаж M?',['Порте','Е-Классик, Прованс','Твист','Юнит'],1,'Погонаж M (клеевое крепление) — для классических Е-Классик и Прованс.'],
+ ['Разные цвета сторон полотна при одном покрытии стоят…',['Бесплатно','+5%','+15% к более дорогому цвету','+30%'],2,'Выкрас сторон в разные цвета при едином покрытии — +15% к более дорогому.'],
+ ['Дверь толщиной 52 мм стоит…',['как обычная','полотно +25%','полотно +50%','полотно +80%'],1,'52 мм — +25%, 59 мм — +35%, 66 мм — +80%. Повышенная толщина — только с притвором.'],
+ ['В какой коллекции модели только в шпоне?',['Е-Классик','Россо и Неоклассик','Сиена','Модерн'],1,'Россо и Неоклассик — шпон; Е-Классик, Сиена, Модерн — эмаль.'],
+ ['Что означает 4Al в названии модели Порте?',['4 стекла','Алюминиевая кромка по периметру','4 мм стекло','Обратное открывание'],1,'2Al — кромка с двух сторон, 3Al — с трёх, 4Al — по периметру полотна.'],
+ ['Можно ли закалить стекло цвета бронза?',['Да','Нет','Только с доплатой 50%','Только для Флутис'],1,'Закалка в цвете бронза и евробронза не производится.'],
+ ['Где уточнять сроки изготовления моделей?',['В прайсе','В личном кабинете дилера на teremdoor.ru','У клиента','Нигде'],1,'Сроки изготовления смотрят в ЛК дилера на teremdoor.ru.'],
+];
+let qs=[],qi=0,score=0,answered=false;
+function resKey(){return 'terem_quiz'}
+function getRes(){try{return JSON.parse(localStorage.getItem(resKey())||'[]')}catch(e){return[]}}
+function quizStart(){
+  const name=($('#qname')&&$('#qname').value.trim())||'';
+  try{localStorage.setItem('terem_qname',name)}catch(e){}
+  qs=[...Q].sort(()=>Math.random()-.5).slice(0,10).map(q=>{const o=q[1].map((t,i)=>({t,ok:i===q[2]})).sort(()=>Math.random()-.5);return {q:q[0],o,ex:q[3]}});
+  qi=0;score=0;quizQ();
+}
+function quizQ(){
+  answered=false;const q=qs[qi];
+  $('#lcontent').innerHTML=`<div class="qhead"><span>Вопрос ${qi+1} из ${qs.length}</span><span>Верно: ${score}</span></div>
+  <div class="qbar"><span style="width:${qi/qs.length*100}%"></span></div>
+  <h2 class="qq">${esc(q.q)}</h2><div class="qopts">${q.o.map((o,i)=>`<button class="qo" data-i="${i}">${esc(o.t)}</button>`).join('')}</div>
+  <div class="qex" id="qex" hidden></div><div class="qnav"><button class="btn pri" id="qnext" hidden>${qi+1<qs.length?'Следующий вопрос':'Показать результат'}</button></div>`;
+  document.querySelectorAll('.qo').forEach(b=>b.onclick=()=>{
+    if(answered)return;answered=true;const o=q.o[+b.dataset.i];
+    if(o.ok)score++;
+    document.querySelectorAll('.qo').forEach((x,i)=>{if(q.o[i].ok)x.classList.add('ok');else if(x===b)x.classList.add('bad');x.disabled=true});
+    const ex=$('#qex');ex.hidden=false;ex.innerHTML=`<b>${o.ok?'Верно.':'Неверно.'}</b> ${esc(q.ex)}`;ex.className='qex '+(o.ok?'ok':'bad');
+    $('#qnext').hidden=false;$('#qnext').focus();
+  });
+  $('#qnext').onclick=()=>{qi++;if(qi<qs.length)quizQ();else quizEnd()};
+}
+function quizEnd(){
+  const pct=Math.round(score/qs.length*100);let name='';try{name=localStorage.getItem('terem_qname')||''}catch(e){}
+  const r=getRes();r.unshift({name,score,total:qs.length,ts:Date.now()});try{localStorage.setItem(resKey(),JSON.stringify(r.slice(0,50)))}catch(e){}
+  const grade=pct>=90?['Отлично','Вы хорошо знаете прайс Терема.']:pct>=70?['Хорошо','Повторите разделы, где были ошибки.']:['Нужно повторить','Пройдите разделы обучения и попробуйте ещё раз.'];
+  $('#lcontent').innerHTML=`<div class="qres"><div class="qbig">${score} / ${qs.length}</div><h2>${grade[0]}</h2><p>${grade[1]}</p>
+  <div class="qnav"><button class="btn pri" id="qagain">Пройти ещё раз</button><button class="btn" id="qtohome">К разделам</button></div></div>${resTable()}`;
+  $('#qagain').onclick=quizStart;$('#qtohome').onclick=()=>openTopic('terem');
+}
+function resTable(){const r=getRes();if(!r.length)return'';return `<h3>Последние результаты на этом устройстве</h3>`+tbl(['Сотрудник','Результат','Дата'],r.slice(0,10).map(x=>[esc(x.name||'—'),`${x.score} / ${x.total}`,new Date(x.ts).toLocaleString('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})]))}
+function quizIntro(){let n='';try{n=localStorage.getItem('terem_qname')||''}catch(e){}
+  return `<p class="lead">10 случайных вопросов из ${Q.length} — по прайсу, покрытиям, стёклам, погонажу и правилам расчёта. После каждого ответа — объяснение.</p>
+  <div class="qstart"><label class="f"><span>Ваше имя</span><input id="qname" value="${esc(n)}" placeholder="Например, Айбек"></label><button class="btn pri" id="qgo">Начать тест</button></div>${resTable()}`}
+
+function openTopic(k){
+  document.querySelectorAll('#lnav button').forEach(b=>b.setAttribute('aria-current',b.dataset.k===k?'true':'false'));
+  const c=$('#lcontent');
+  if(k==='quiz'){c.innerHTML=`<h2 class="lh">Тест по Терему</h2>`+quizIntro();$('#qgo').onclick=quizStart}
+  else{const t=T[k];c.innerHTML=`<h2 class="lh">${t.t}</h2>`+t.h()+src}
+  c.scrollTop=0; const top=$('#viewLearn').getBoundingClientRect().top+scrollY-80; if(scrollY>top)scrollTo({top,behavior:'smooth'});
+}
+window.initLearn=function(){
+  const nav=$('#lnav'); if(nav.dataset.ready)return; nav.dataset.ready=1;
+  nav.innerHTML=ORDER.map(([k,t],i)=>`<button data-k="${k}"><span class="ln">${k==='quiz'?'✓':i+1}</span>${t}</button>`).join('');
+  nav.querySelectorAll('button').forEach(b=>b.onclick=()=>openTopic(b.dataset.k));
+  openTopic('terem');
+};
+})();
+
+</script>
 <script>
 (function(){
 const $=s=>document.querySelector(s);
@@ -621,8 +888,8 @@ $('#saveHist').onclick=async()=>{
   if(db){try{await db.collection('data/users/'+uid).add(rec);toast('Сохранено в историю')}catch(e){toast('Не удалось сохранить'+(e&&e.code?' ('+e.code+')':''),true)}}
   else{try{const l=localHist();l.unshift({id:String(rec.ts),...rec});localStorage.setItem('terem_hist',JSON.stringify(l.slice(0,200)));toast('Сохранено в историю (в этом браузере)')}catch(e){toast('Не удалось сохранить',true)}}
 };
-function showTab(t){$('#viewCalc').hidden=t!=='calc';$('#viewHist').hidden=t==='calc';$('#tabCalc').setAttribute('aria-selected',t==='calc');$('#tabHist').setAttribute('aria-selected',t!=='calc');if(t!=='calc')renderHist();else fitPaper()}
-$('#tabCalc').onclick=()=>showTab('calc');$('#tabHist').onclick=()=>showTab('hist');
+function showTab(t){$('#viewCalc').hidden=t!=='calc';$('#viewHist').hidden=t!=='hist';$('#viewLearn').hidden=t!=='learn';$('#tabCalc').setAttribute('aria-selected',t==='calc');$('#tabHist').setAttribute('aria-selected',t==='hist');$('#tabLearn').setAttribute('aria-selected',t==='learn');$('.mbar').style.visibility=t==='calc'?'':'hidden';if(t==='hist')renderHist();else if(t==='learn')window.initLearn();else fitPaper()}
+$('#tabCalc').onclick=()=>showTab('calc');$('#tabHist').onclick=()=>showTab('hist');$('#tabLearn').onclick=()=>showTab('learn');
 
 bindMeta();renderDoors();renderExtras();
 setTimeout(initDb,0);

@@ -19,6 +19,7 @@
   --ink:#eceef0; --ink-fg:#111214; --brand:#8f9bff; --hi:#43d19f; --hi-soft:#123528; --danger:#f08b70; --desk:#0a0b0c;
   --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35); color-scheme:dark}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{background:var(--bg)}
 body{color:var(--fg);font-family:var(--ui);font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--s1)}
@@ -153,6 +154,64 @@ details.qty[open] summary::before{content:"－ ";}
 .hrow .m{font-size:12px;color:var(--mute)}
 .hrow .s{font-variant-numeric:tabular-nums;font-weight:600}
 .empty{color:var(--mute);padding:36px;border:1px dashed var(--line2);border-radius:var(--r);text-align:center;max-width:860px}
+/* обучение */
+.learn{display:grid;grid-template-columns:260px minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:900px){.learn{grid-template-columns:minmax(0,1fr)}}
+.lnav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);padding:8px;display:flex;flex-direction:column;gap:2px}
+@media (max-width:900px){.lnav{position:static;flex-direction:row;overflow-x:auto}.lnav button{white-space:nowrap}}
+.lnav button{display:flex;gap:10px;align-items:center;text-align:left;border:0;background:none;font:inherit;color:var(--fg);padding:9px 10px;border-radius:9px;cursor:pointer}
+.lnav button:hover{background:var(--s2)}
+.lnav button[aria-current="true"]{background:var(--hi-soft);color:var(--fg);font-weight:600}
+.lnav .ln{width:22px;height:22px;border-radius:6px;border:1px solid var(--line2);display:grid;place-items:center;font-size:11px;color:var(--mute);flex:none}
+.lnav button[aria-current="true"] .ln{background:var(--hi);border-color:var(--hi);color:#fff}
+.lcontent{padding:26px 28px 30px;min-width:0;line-height:1.55}
+@media (max-width:560px){.lcontent{padding:18px 16px}}
+.lcontent .lh{font-size:26px;font-weight:700;letter-spacing:-.01em;margin:0 0 12px}
+.lcontent h3{font-size:16px;margin:24px 0 10px}
+.lcontent p{margin:0 0 10px;max-width:75ch}
+.lcontent ul{margin:0 0 10px;padding-left:20px}
+.lead{font-size:16px;color:var(--fg)}
+.lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin:12px 0}
+.lbox{border:1px solid var(--line);background:var(--s2);border-radius:11px;padding:14px}
+.lbox b{display:block;margin-bottom:4px}.lbox p{margin:0;font-size:13.5px;color:var(--mute)}
+.ltw{overflow-x:auto;margin:6px 0 12px}
+.lt{border-collapse:collapse;width:100%;font-size:13.5px}
+.lt th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);font-weight:600;padding:8px 10px;border-bottom:1.5px solid var(--line2)}
+.lt td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.lnote{font-size:12.5px;color:var(--mute);background:var(--s2);border-left:3px solid var(--hi);border-radius:6px;padding:9px 12px;margin:8px 0 12px}
+.lsrc{font-size:12px;color:var(--mute);margin-top:22px!important;border-top:1px solid var(--line);padding-top:12px}
+.sws{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+.sw{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px}
+.sw .chip{width:38px;height:38px;border-radius:8px;border:1px solid rgba(0,0,0,.12);flex:none}
+.sw b{display:block;font-size:13.5px}.sw small{color:var(--mute);font-size:12px}
+.lcoll{display:flex;flex-direction:column;gap:8px}
+.lcard{border:1px solid var(--line);border-radius:11px;overflow:hidden}
+.lcard summary{cursor:pointer;padding:12px 14px;display:flex;flex-direction:column;gap:2px;list-style:none}
+.lcard summary:hover{background:var(--s2)}
+.lcard .lt1{font-weight:600}.lcard .lt2{font-size:12.5px;color:var(--mute)}
+.lcard[open] summary{border-bottom:1px solid var(--line)}
+.lcard .ltw{padding:0 14px}
+.lpics{display:flex;gap:8px;overflow-x:auto;padding:12px 14px}
+.lpics figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 4px;display:flex;flex-direction:column;align-items:center;gap:4px;flex:none}
+.lpics img{height:96px}.lpics .lb{height:12px;max-width:80px;object-fit:contain}
+.qstart{display:flex;gap:10px;align-items:end;flex-wrap:wrap;margin:14px 0}
+.qstart .f{width:min(320px,100%)}
+.qhead{display:flex;justify-content:space-between;font-size:13px;color:var(--mute)}
+.qbar{height:6px;border-radius:3px;background:var(--s2);margin:8px 0 18px;overflow:hidden}.qbar span{display:block;height:100%;background:var(--hi);transition:width .3s}
+.qq{font-size:22px;line-height:1.3;margin:0 0 16px;max-width:60ch}
+.qopts{display:grid;gap:8px;max-width:680px}
+.qo{text-align:left;font:inherit;font-size:15px;padding:13px 16px;border:1px solid var(--line2);border-radius:11px;background:var(--s1);color:var(--fg);cursor:pointer}
+.qo:hover:not(:disabled){border-color:var(--fg)}
+.qo.ok{border-color:var(--hi);background:var(--hi-soft)}
+.qo.bad{border-color:var(--danger);color:var(--danger)}
+.qo:disabled{cursor:default}
+.qex{margin-top:14px;padding:12px 14px;border-radius:10px;max-width:680px;font-size:14px}
+.qex.ok{background:var(--hi-soft)}.qex.bad{background:var(--s2);border-left:3px solid var(--danger)}
+.qnav{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.qres{text-align:center;padding:10px 0 6px}.qres .qnav{justify-content:center}
+.qbig{font-size:56px;font-weight:700;letter-spacing:-.02em;color:var(--hi)}
+.qres h2{margin:4px 0}
+.qres p{margin:0 auto 10px}
 /* подвал */
 footer.foot .in{display:flex;align-items:center;justify-content:center;gap:10px;padding-block:22px 30px;border-top:1px solid var(--line);color:var(--mute);font-size:12.5px}
 footer.foot .u{width:22px;height:22px;border-radius:6px;background:var(--ink);color:var(--ink-fg);display:grid;place-items:center;font-weight:700;font-size:12px}
@@ -209,7 +268,7 @@ footer.foot .brandname{color:var(--brand);font-weight:700;letter-spacing:.01em}
   <div class="pill" title="Цены и методика взяты из этого прайса"><span class="dot"></span><span>Прайс от <b id="pdate"></b></span><span class="long">· <span id="pver"></span></span></div>
   <button class="btn sm helpbtn" id="helpBtn"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l7-4.5z"/></svg>Инструкция</button>
   <button class="icon-btn" id="themeBtn" aria-label="Сменить тему"></button>
-  <div class="seg" role="tablist"><button role="tab" id="tabCalc" aria-selected="true">Расчёт</button><button role="tab" id="tabHist" aria-selected="false">История</button></div>
+  <div class="seg" role="tablist"><button role="tab" id="tabCalc" aria-selected="true">Расчёт</button><button role="tab" id="tabLearn" aria-selected="false">Обучение</button><button role="tab" id="tabHist" aria-selected="false">История</button></div>
 </div></header>
 
 <main class="in pad">
@@ -245,6 +304,10 @@ footer.foot .brandname{color:var(--brand);font-weight:700;letter-spacing:.01em}
       <div class="paperbox" id="paperbox"><div id="paper"></div></div></div>
   </aside>
 </div>
+<div id="viewLearn" class="learn" hidden>
+  <nav class="lnav card" id="lnav" aria-label="Разделы обучения"></nav>
+  <article class="lcontent card" id="lcontent"></article>
+</div>
 <div id="viewHist" hidden><div class="hist" id="histList"></div></div>
 </main>
 <div class="vmodal" id="vmodal" hidden role="dialog" aria-modal="true" aria-labelledby="vtitle">
@@ -262,6 +325,9 @@ const IMGS = /*IMGS*/null;
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+/*LEARN*/
+</script>
 <script>
 (function(){
 const $=s=>document.querySelector(s);
@@ -619,8 +685,8 @@ $('#saveHist').onclick=async()=>{
   if(db){try{await db.collection('data/users/'+uid).add(rec);toast('Сохранено в историю')}catch(e){toast('Не удалось сохранить'+(e&&e.code?' ('+e.code+')':''),true)}}
   else{try{const l=localHist();l.unshift({id:String(rec.ts),...rec});localStorage.setItem('terem_hist',JSON.stringify(l.slice(0,200)));toast('Сохранено в историю (в этом браузере)')}catch(e){toast('Не удалось сохранить',true)}}
 };
-function showTab(t){$('#viewCalc').hidden=t!=='calc';$('#viewHist').hidden=t==='calc';$('#tabCalc').setAttribute('aria-selected',t==='calc');$('#tabHist').setAttribute('aria-selected',t!=='calc');if(t!=='calc')renderHist();else fitPaper()}
-$('#tabCalc').onclick=()=>showTab('calc');$('#tabHist').onclick=()=>showTab('hist');
+function showTab(t){$('#viewCalc').hidden=t!=='calc';$('#viewHist').hidden=t!=='hist';$('#viewLearn').hidden=t!=='learn';$('#tabCalc').setAttribute('aria-selected',t==='calc');$('#tabHist').setAttribute('aria-selected',t==='hist');$('#tabLearn').setAttribute('aria-selected',t==='learn');$('.mbar').style.visibility=t==='calc'?'':'hidden';if(t==='hist')renderHist();else if(t==='learn')window.initLearn();else fitPaper()}
+$('#tabCalc').onclick=()=>showTab('calc');$('#tabHist').onclick=()=>showTab('hist');$('#tabLearn').onclick=()=>showTab('learn');
 
 bindMeta();renderDoors();renderExtras();
 setTimeout(initDb,0);
