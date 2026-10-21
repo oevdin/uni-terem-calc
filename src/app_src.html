@@ -573,9 +573,15 @@ $('#savePdf').onclick=async()=>{
     }
     const blob=pdf.output('blob');
     const name=('Эскиз и расчёт '+(S.meta.client||'')+' '+(S.meta.num||'')).trim().replace(/\s+/g,' ')+'.pdf';
-    if(!downloads)downloads=await (window.claude?.use?window.claude.use('downloads'):null);
-    if(!downloads){toast('Сохранение файлов недоступно в этом окне',true);return}
-    await downloads.save({filename:name,data:blob}); toast('PDF сохранён');
+    if(!downloads&&window.claude&&window.claude.use){try{downloads=await window.claude.use('downloads')}catch(e){downloads=null}}
+    if(downloads){
+      try{await downloads.save({filename:name,data:blob}); toast('PDF сохранён'); return}
+      catch(e){ if(e&&e.code==='declined'){toast('Сохранение отменено',true);return} }
+    }
+    // обычное скачивание браузера (GitHub Pages, файл на компьютере)
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.rel='noopener';
+    document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},4000);
+    toast('PDF скачан: '+name);
   }catch(e){ if(e&&e.code==='declined')toast('Сохранение отменено',true); else toast('Не удалось сохранить PDF'+(e&&e.code?' ('+e.code+')':''),true)}
   finally{btn.disabled=false;btn.innerHTML=btn.dataset.h}
 };
